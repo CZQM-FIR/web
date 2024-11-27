@@ -1,6 +1,7 @@
 import { dev } from '$app/environment';
 import type { Handle } from '@sveltejs/kit';
 import { drizzle } from 'drizzle-orm/d1';
+import * as schema from '$lib/db/schema';
 
 let platform: App.Platform;
 
@@ -17,7 +18,7 @@ export const handle = (async ({ event, resolve }) => {
     };
   }
 
-  event.locals.db = drizzle(event.platform?.env.DB as D1Database);
+  event.locals.db = drizzle(event.platform?.env.DB as D1Database, { schema });
 
   return await resolve(event);
 }) satisfies Handle;
