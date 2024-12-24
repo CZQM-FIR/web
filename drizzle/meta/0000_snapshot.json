@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "f67db3f6-11b9-488c-8cd8-d988eee8d4f1",
+  "id": "1430160f-8052-4457-a41d-bcddf02954f5",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "flags": {
@@ -448,10 +448,10 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "integer",
+          "type": "text",
           "primaryKey": true,
           "notNull": true,
-          "autoincrement": true
+          "autoincrement": false
         },
         "user_id": {
           "name": "user_id",

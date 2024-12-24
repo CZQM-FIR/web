@@ -68,7 +68,7 @@ CREATE TABLE `sessions` (
 );
 --> statement-breakpoint
 CREATE TABLE `auth_sessions` (
-	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
+	`id` text PRIMARY KEY NOT NULL,
 	`user_id` integer NOT NULL,
 	`expires_at` integer NOT NULL,
 	FOREIGN KEY (`user_id`) REFERENCES `users`(`cid`) ON UPDATE no action ON DELETE no action
