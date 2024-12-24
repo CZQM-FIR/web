@@ -2,6 +2,7 @@ import { dev } from '$app/environment';
 import type { Handle } from '@sveltejs/kit';
 import { drizzle } from 'drizzle-orm/d1';
 import * as schema from '$lib/db/schema';
+import { sequence } from '@sveltejs/kit/hooks';
 
 let platform: App.Platform;
 
@@ -10,7 +11,7 @@ if (dev) {
   platform = await getPlatformProxy();
 }
 
-export const handle = (async ({ event, resolve }) => {
+const database: Handle = (async ({ event, resolve }) => {
   if (dev && platform) {
     event.platform = {
       ...event.platform,
@@ -22,3 +23,5 @@ export const handle = (async ({ event, resolve }) => {
 
   return await resolve(event);
 }) satisfies Handle;
+
+export const handle = sequence(database);
