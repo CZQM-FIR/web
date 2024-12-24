@@ -6,4 +6,5 @@ pages_build_output_dir = ".svelte-kit/cloudflare"
 [[d1_databases]]
 binding = "DB"
 database_name = "czqm-test"
-database_id = "f3c800d8-43ff-4ff7-806a-b8e0f6116caf"
+database_id = "060fbe95-2147-4733-bc50-7888624b48e9"
+preview_database_id = "DB"
