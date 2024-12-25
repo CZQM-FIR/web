@@ -1,6 +1,8 @@
 import type { RequestEvent } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-import { VATSIM_CLIENT_ID, VATSIM_CLIENT_SECRET, VATSIM_URL } from '$env/static/private';
+import { VATSIM_CLIENT_ID, VATSIM_CLIENT_SECRET } from '$env/static/private';
+
+const VATSIM_URL = 'https://auth.vatsim.net';
 import { users } from '$lib/db/schema';
 import { eq } from 'drizzle-orm';
 import {
