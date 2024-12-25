@@ -1,8 +1,8 @@
-import { relations } from "drizzle-orm";
-import { int, sqliteTable, text } from "drizzle-orm/sqlite-core";
-import { news, ratings, sessions, usersToFlags } from ".";
+import { relations, type InferSelectModel } from 'drizzle-orm';
+import { int, sqliteTable, text } from 'drizzle-orm/sqlite-core';
+import { news, ratings, sessions, usersToFlags } from '.';
 
-const users = sqliteTable("users", {
+export const users = sqliteTable('users', {
   cid: int().primaryKey(),
   name_first: text().notNull(),
   name_last: text().notNull(),
@@ -14,17 +14,17 @@ const users = sqliteTable("users", {
   division: text(),
   region: text(),
   subdivision: text(),
-  bio: text(),
+  bio: text()
 });
 
 export const usersRelations = relations(users, ({ one, many }) => ({
   rating: one(ratings, {
     fields: [users.rating],
-    references: [ratings.id],
+    references: [ratings.id]
   }),
   flags: many(usersToFlags),
   // articles: many(news),
-  sessions: many(sessions),
+  sessions: many(sessions)
 }));
 
-export default users;
+export type User = InferSelectModel<typeof users>;

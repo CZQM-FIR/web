@@ -1,9 +1,10 @@
-import { int, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import type { InferSelectModel } from 'drizzle-orm';
+import { int, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 
-const ratings = sqliteTable("ratings", {
+export const ratings = sqliteTable('ratings', {
   id: int().primaryKey(),
   long: text().notNull(),
-  short: text().notNull(),
+  short: text().notNull()
 });
 
-export default ratings;
+export type Rating = InferSelectModel<typeof ratings>;

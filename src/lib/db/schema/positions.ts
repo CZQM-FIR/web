@@ -1,10 +1,11 @@
-import { int, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import type { InferSelectModel } from 'drizzle-orm';
+import { int, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 
-const positions = sqliteTable("positions", {
+export const positions = sqliteTable('positions', {
   id: int().primaryKey({ autoIncrement: true }),
   callsign: text().notNull().unique(),
   frequency: text().notNull(),
-  name: text().notNull(),
+  name: text().notNull()
 });
 
-export default positions;
+export type Position = InferSelectModel<typeof positions>;
