@@ -1,5 +1,6 @@
 import type { RequestEvent } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
+import { VATSIM_CLIENT_ID, VATSIM_CLIENT_SECRET, VATSIM_URL } from '$env/static/private';
 import { users } from '$lib/db/schema';
 import { eq } from 'drizzle-orm';
 import {
@@ -11,8 +12,6 @@ import {
 } from '$lib/auth';
 
 export const GET: RequestHandler = async (event): Promise<Response> => {
-  const { VATSIM_URL, VATSIM_CLIENT_ID, VATSIM_CLIENT_SECRET } = import.meta.env;
-
   const { url, locals, cookies } = event;
   const { db } = locals;
 
