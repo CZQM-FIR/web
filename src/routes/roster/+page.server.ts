@@ -1,7 +1,7 @@
 import { eq } from 'drizzle-orm';
 import type { PageServerLoad } from './$types';
 import { users } from '$lib/db/schema';
-import { getUserRole } from '$lib/utilities/getUserRole';
+import { getUserRole, getUserRoleByCID } from '$lib/utilities/getUserRole';
 
 export const load = (async ({ locals }) => {
   const { db } = locals;
@@ -39,7 +39,7 @@ export const load = (async ({ locals }) => {
   });
 
   controllers.map(async (controller) => {
-    controller.role = await getUserRole(locals, controller.cid);
+    controller.role = getUserRole(controller.flags);
   });
 
   return {
