@@ -11,7 +11,7 @@
 </script>
 
 <!-- nav bar -->
-<nav class="w-screen bg-base-100">
+<nav class="w-screen bg-base-300">
   <div class="container navbar top-0 mx-auto">
     <div class="navbar-start">
       <div class="dropdown">
@@ -30,7 +30,7 @@
             /></svg
           >
         </div>
-        <ul class="menu dropdown-content menu-sm z-50 mt-3 rounded-box bg-base-100 p-2 shadow">
+        <ul class="menu dropdown-content menu-sm z-50 mt-3 rounded-box bg-base-300 p-2 shadow">
           <li>
             <a href="/about">About Us</a>
           </li>
@@ -72,7 +72,7 @@
         <li>
           <div class="dropdown dropdown-bottom">
             <div tabindex="0" role="button">Controllers</div>
-            <ul class="menu dropdown-content z-[1] w-52 rounded-box bg-base-100 p-2 shadow">
+            <ul class="menu dropdown-content z-[1] w-52 rounded-box bg-base-300 p-2 shadow">
               <li><a href="/staff"><Icon icon="mdi:administrator" /> Staff</a></li>
               <li>
                 <a href="/roster"><Icon icon="mdi:account-group" /> Roster</a>
@@ -84,7 +84,7 @@
         <li>
           <div class="dropdown dropdown-bottom">
             <div tabindex="0" role="button">Pilots</div>
-            <ul class="menu dropdown-content z-[1] w-52 rounded-box bg-base-100 p-2 shadow">
+            <ul class="menu dropdown-content z-[1] w-52 rounded-box bg-base-300 p-2 shadow">
               <li>
                 <a href="/pilot-resources"><Icon icon="mdi:clipboard-text" /> Resources</a>
               </li>
@@ -100,11 +100,11 @@
     <div class="navbar-end">
       {#if data.user}
         <div class="dropdown dropdown-end">
-          <div tabindex="0" role="button" class="btn btn-ghost">
+          <div tabindex="0" role="button" class="btn btn-ghost bg-base-300">
             <Icon icon="mdi:account" />
             {data.user.name_full}
           </div>
-          <ul class="menu dropdown-content z-[1] rounded-box bg-base-100 p-2 shadow">
+          <ul class="menu dropdown-content z-[1] rounded-box bg-base-300 p-2 shadow">
             <li><a href="/my"><Icon icon="mdi:account-edit" /> MyCZQM</a></li>
             <li>
               <a href={`/auth/logout`}><Icon icon="mdi:logout" /> Logout</a>
@@ -112,7 +112,7 @@
           </ul>
         </div>
       {:else}
-        <a href={`/auth?redirect=${$page.url.pathname}`} class="btn"
+        <a href={`/auth?redirect=${$page.url.pathname}`} class="btn bg-base-300"
           ><Icon icon="mdi:login-variant" /> Login</a
         >
       {/if}
@@ -150,7 +150,7 @@
 </main>
 
 <!-- footer -->
-<footer class="bg-base-200 py-10 text-base-content md:p-10">
+<footer class="bg-base-300 py-10 text-base-content md:p-10">
   <div class="footer max-md:footer-center md:container md:mx-auto">
     <aside>
       <img src={CZQMLogo} alt="" class="hidden md:block" />

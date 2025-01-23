@@ -51,17 +51,6 @@ INSERT INTO flags VALUES (3, 'no-email');
 INSERT INTO flags VALUES (4, 'visitor');
 INSERT INTO flags VALUES (5, 'controller');
 INSERT INTO flags VALUES (6, 'fss');
-INSERT INTO flags VALUES (7, 'roster-ctr-cert');
-INSERT INTO flags VALUES (8, 'roster-app-cert');
-INSERT INTO flags VALUES (9, 'roster-twr-cert');
-INSERT INTO flags VALUES (10, 'roster-gnd-cert');
-INSERT INTO flags VALUES (11, 'roster-ctr-solo');
-INSERT INTO flags VALUES (12, 'roster-app-solo');
-INSERT INTO flags VALUES (13, 'roster-twr-solo');
-INSERT INTO flags VALUES (14, 'roster-ctr-sup');
-INSERT INTO flags VALUES (15, 'roster-app-sup');
-INSERT INTO flags VALUES (16, 'roster-twr-sup');
-INSERT INTO flags VALUES (17, 'roster-gnd-sup');
 INSERT INTO flags VALUES (18, 'sector');
 INSERT INTO flags VALUES (19, 'events');
 INSERT INTO flags VALUES (20, 'web');
@@ -73,3 +62,9 @@ INSERT INTO flags VALUES (25, 'instructor');
 INSERT INTO flags VALUES (26, 'staff-instructing');
 INSERT INTO flags VALUES (27, 'staff');
 INSERT INTO flags VALUES (28, 'admin');
+
+-- Insert data into the `ticket_types` table
+INSERT INTO ticket_types VALUES (-1, 'Unknown');
+INSERT INTO ticket_types VALUES (0, 'Other');
+INSERT INTO ticket_types VALUES (1, 'Controller Feedback');
+INSERT INTO ticket_types VALUES (2, 'Website Feedback');

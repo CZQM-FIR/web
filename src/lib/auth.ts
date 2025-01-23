@@ -82,6 +82,14 @@ export function deleteSessionTokenCookie(event: RequestEvent): void {
   });
 }
 
+export function auth(event: RequestEvent): Promise<SessionValidationResult> {
+  const token = event.cookies.get('session');
+  if (!token) {
+    return Promise.resolve({ session: null, user: null });
+  }
+  return validateSessionToken(token, event.locals);
+}
+
 export type SessionValidationResult =
   | { session: AuthSession; user: User }
   | { session: null; user: null };

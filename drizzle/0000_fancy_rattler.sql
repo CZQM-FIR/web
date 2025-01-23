@@ -73,3 +73,28 @@ CREATE TABLE `auth_sessions` (
 	`expires_at` integer NOT NULL,
 	FOREIGN KEY (`user_id`) REFERENCES `users`(`cid`) ON UPDATE no action ON DELETE no action
 );
+--> statement-breakpoint
+CREATE TABLE `ticket_messages` (
+	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
+	`ticket_id` integer NOT NULL,
+	`author_id` integer NOT NULL,
+	`message` text NOT NULL,
+	FOREIGN KEY (`ticket_id`) REFERENCES `tickets`(`id`) ON UPDATE no action ON DELETE no action,
+	FOREIGN KEY (`author_id`) REFERENCES `users`(`cid`) ON UPDATE no action ON DELETE cascade
+);
+--> statement-breakpoint
+CREATE TABLE `ticket_types` (
+	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
+	`name` text NOT NULL
+);
+--> statement-breakpoint
+CREATE TABLE `tickets` (
+	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
+	`subject` text NOT NULL,
+	`description` text NOT NULL,
+	`author_id` integer NOT NULL,
+	`type_id` integer NOT NULL,
+	`status` text DEFAULT 'open' NOT NULL,
+	FOREIGN KEY (`author_id`) REFERENCES `users`(`cid`) ON UPDATE no action ON DELETE cascade,
+	FOREIGN KEY (`type_id`) REFERENCES `ticket_types`(`id`) ON UPDATE no action ON DELETE cascade
+);

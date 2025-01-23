@@ -19,7 +19,7 @@
           {#if staff.bio}
             <p>{staff.bio}</p>
           {:else}
-            <p>No bio available.</p>
+            <p></p>
           {/if}
         </div>
       </div>
