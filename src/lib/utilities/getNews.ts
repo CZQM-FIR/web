@@ -8,7 +8,7 @@ export const getAllArticles = async (locals: App.Locals) => {
     orderBy: [desc(news.date)],
     with: {
       author: {
-        select: {
+        columns: {
           email: false
         }
       }
@@ -25,7 +25,7 @@ export const getArticleById = async (locals: App.Locals, id: number) => {
     where: eq(news.id, id),
     with: {
       author: {
-        select: {
+        columns: {
           email: false
         }
       }

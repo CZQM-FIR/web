@@ -5,12 +5,23 @@
   let { data }: { data: PageData } = $props();
 </script>
 
-<div>
-  <a href="/auth" class="btn m-5">Login</a>
-  <a href="/auth/logout" class="btn m-5">Logout</a>
+<section id="hero" class="hero min-h-screen">
+  <div class="hero-overlay bg-opacity-60"></div>
+  <div class="hero-content text-center text-neutral-content">
+    <div class="max-w-md">
+      <h1 class="mb-5 text-5xl font-bold">Canada's Gateway to the East Coast</h1>
+      <p class="mb-5">
+        Providing realistic ATC services across the maritime provinces on the VATSIM network.
+      </p>
+      <a href="/about" class="btn btn-primary">Learn More</a>
+    </div>
+  </div>
+</section>
 
-  <ul>
-    <li>{JSON.stringify(data.user)}</li>
-    <li>{JSON.stringify(data.session)}</li>
-  </ul>
-</div>
+<style>
+  #hero {
+    background:
+      linear-gradient(rgba(0, 0, 0, 0.473), rgba(0, 0, 0, 0.473)),
+      url('$lib/assets/images/hero-bg.jpg') no-repeat center / cover;
+  }
+</style>

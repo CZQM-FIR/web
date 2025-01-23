@@ -10,5 +10,23 @@ export default {
     extend: {}
   },
 
-  plugins: [typography, forms, daisyui]
+  plugins: [typography, forms, daisyui],
+
+  daisyui: {
+    themes: [
+      {
+        czqmTheme: {
+          primary: '#226dad',
+          secondary: '#DDA01D',
+          accent: '#008072',
+          neutral: '#2a323c',
+          'base-100': '#1d232a',
+          info: '#08d0ff',
+          success: '#22c55e',
+          warning: '#fbbf24',
+          error: '#ef5465'
+        }
+      }
+    ]
+  }
 } satisfies Config;

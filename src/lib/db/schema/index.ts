@@ -7,3 +7,4 @@ export * from './news';
 export * from './positions';
 export * from './sessions';
 export * from './authSessions';
+export * from './tickets';
