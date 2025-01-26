@@ -6,7 +6,8 @@ export const events = sqliteTable('events', {
   name: text().notNull(),
   description: text().notNull(),
   start: int({ mode: 'timestamp' }).notNull(),
-  end: int({ mode: 'timestamp' }).notNull()
+  end: int({ mode: 'timestamp' }).notNull(),
+  image: text().notNull() // R2 key
 });
 
 export type Event = InferSelectModel<typeof events>;

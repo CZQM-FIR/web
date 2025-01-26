@@ -1,7 +1,6 @@
 <script lang="ts">
   import type { PageData } from './$types';
 
-  import ChartExampleImage from '$lib/assets/images/fundy5.png';
   interface Props {
     data: PageData;
   }
@@ -12,7 +11,7 @@
 <section id="charts-info" class="hero min-h-screen bg-base-200">
   <div class="hero-content flex-col lg:flex-row">
     <img
-      src={ChartExampleImage}
+      src="https://files.czqm.ca/images/fundy5.png"
       alt="NAVCAN Chart for the FUNDY5 arrival into Halifax"
       class="image"
     />

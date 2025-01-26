@@ -8,3 +8,4 @@ export * from './positions';
 export * from './sessions';
 export * from './authSessions';
 export * from './tickets';
+export * from './resources';
