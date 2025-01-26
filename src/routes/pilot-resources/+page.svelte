@@ -34,5 +34,3 @@
     </div>
   </div>
 </section>
-
-<p>{JSON.stringify(data.resources)}</p>
