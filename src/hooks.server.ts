@@ -25,6 +25,11 @@ const database: Handle = async ({ event, resolve }) => {
   return await resolve(event);
 };
 
+const r2: Handle = async ({ event, resolve }) => {
+  event.locals.bucket = event.platform?.env.bucket as R2Bucket;
+  return await resolve(event);
+};
+
 const session: Handle = async ({ event, resolve }) => {
   const { locals } = event;
 
@@ -47,4 +52,4 @@ const session: Handle = async ({ event, resolve }) => {
   return await resolve(event);
 };
 
-export const handle = sequence(database, session);
+export const handle = sequence(database, r2, session);

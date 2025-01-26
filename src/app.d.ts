@@ -9,12 +9,14 @@ declare global {
     interface Platform {
       env: {
         DB: D1Database;
+        bucket: R2Bucket;
       };
     }
     interface Locals {
       db: DrizzleD1Database<typeof schema>;
       user: schema.User | null;
       session: schema.AuthSession | null;
+      bucket: R2Bucket;
     }
   }
 }
