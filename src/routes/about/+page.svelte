@@ -1,7 +1,6 @@
 <script lang="ts">
   import type { PageData } from './$types';
 
-  import SimpleBlackAirspaceImage from '$lib/assets/images/simple-black-airspace.png';
   interface Props {
     data: PageData;
   }
@@ -13,7 +12,7 @@
   <div class="hero min-h-max pt-7">
     <div class="container hero-content flex-col md:flex-row">
       <img
-        src={SimpleBlackAirspaceImage}
+        src="https://files.czqm.ca/images/simple-black-airspace.png"
         class="hidden max-w-sm rounded-lg shadow-2xl md:block"
         alt="Blank map of eastern Canadian provinces representing airspace"
       />

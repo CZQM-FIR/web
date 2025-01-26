@@ -22,7 +22,10 @@
         <a href="/events/{event.id}">
           <div class="card card-compact w-96 bg-base-300 shadow-xl">
             <figure>
-              <img src="https://files.czqm.ca/event/{event.image}" alt="Shoes" />
+              <img
+                src="https://files.czqm.ca/event/{event.image}"
+                alt="{event.name} Banner Image"
+              />
             </figure>
             <div class="card-body">
               <div class="flex flex-row items-center gap-3">
@@ -59,7 +62,10 @@
           <a href="/events/{event.id}">
             <div class="card card-compact w-96 bg-base-300 shadow-xl">
               <figure>
-                <img src="https://files.czqm.ca/event/{event.image}" alt="Shoes" />
+                <img
+                  src="https://files.czqm.ca/event/{event.image}"
+                  alt="{event.name} Banner Image"
+                />
               </figure>
               <div class="card-body">
                 <div class="flex flex-row items-center gap-3">

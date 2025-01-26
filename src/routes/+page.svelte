@@ -22,6 +22,6 @@
   #hero {
     background:
       linear-gradient(rgba(0, 0, 0, 0.473), rgba(0, 0, 0, 0.473)),
-      url('$lib/assets/images/hero-bg.jpg') no-repeat center / cover;
+      url('https://files.czqm.ca/images/hero-bg.jpg') no-repeat center / cover;
   }
 </style>
