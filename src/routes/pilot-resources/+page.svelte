@@ -24,6 +24,13 @@
           </div>
         </a>
       {/each}
+      {#if data.resources.length === 0}
+        <div class="card bg-base-200 shadow-xl">
+          <div class="card-body">
+            <p>No resources available</p>
+          </div>
+        </div>
+      {/if}
     </div>
   </div>
 </section>
