@@ -7,12 +7,13 @@ export const news = sqliteTable('news', {
   title: text().notNull(),
   text: text().notNull(),
   date: int({ mode: 'timestamp' }).notNull(),
-  author: int().references(() => users.cid, { onDelete: 'set null' })
+  authorID: int('author_id').references(() => users.cid, { onDelete: 'set null' }),
+  image: text()
 });
 
 export const newsRelations = relations(news, ({ one }) => ({
   author: one(users, {
-    fields: [news.author],
+    fields: [news.authorID],
     references: [users.cid]
   })
 }));

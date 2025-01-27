@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "703713e1-312a-4770-a43d-6add49a092b3",
+  "id": "888f21a4-398e-4e8e-86ef-412b046892a8",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "flags": {
@@ -257,6 +257,13 @@
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
+        },
+        "image": {
+          "name": "image",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
         }
       },
       "indexes": {},
@@ -296,9 +303,16 @@
           "notNull": true,
           "autoincrement": false
         },
-        "author": {
-          "name": "author",
+        "author_id": {
+          "name": "author_id",
           "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "image": {
+          "name": "image",
+          "type": "text",
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false
@@ -306,12 +320,12 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "news_author_users_cid_fk": {
-          "name": "news_author_users_cid_fk",
+        "news_author_id_users_cid_fk": {
+          "name": "news_author_id_users_cid_fk",
           "tableFrom": "news",
           "tableTo": "users",
           "columnsFrom": [
-            "author"
+            "author_id"
           ],
           "columnsTo": [
             "cid"
@@ -653,6 +667,66 @@
           "onUpdate": "no action"
         }
       },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "resources": {
+      "name": "resources",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "url": {
+          "name": "url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "category": {
+          "name": "category",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "public": {
+          "name": "public",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 1
+        },
+        "type": {
+          "name": "type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
       "checkConstraints": {}

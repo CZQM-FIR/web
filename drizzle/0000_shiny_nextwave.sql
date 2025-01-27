@@ -37,7 +37,8 @@ CREATE TABLE `events` (
 	`name` text NOT NULL,
 	`description` text NOT NULL,
 	`start` integer NOT NULL,
-	`end` integer NOT NULL
+	`end` integer NOT NULL,
+	`image` text NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE `news` (
@@ -45,8 +46,9 @@ CREATE TABLE `news` (
 	`title` text NOT NULL,
 	`text` text NOT NULL,
 	`date` integer NOT NULL,
-	`author` integer,
-	FOREIGN KEY (`author`) REFERENCES `users`(`cid`) ON UPDATE no action ON DELETE set null
+	`author_id` integer,
+	`image` text,
+	FOREIGN KEY (`author_id`) REFERENCES `users`(`cid`) ON UPDATE no action ON DELETE set null
 );
 --> statement-breakpoint
 CREATE TABLE `positions` (
@@ -97,4 +99,14 @@ CREATE TABLE `tickets` (
 	`status` text DEFAULT 'open' NOT NULL,
 	FOREIGN KEY (`author_id`) REFERENCES `users`(`cid`) ON UPDATE no action ON DELETE cascade,
 	FOREIGN KEY (`type_id`) REFERENCES `ticket_types`(`id`) ON UPDATE no action ON DELETE cascade
+);
+--> statement-breakpoint
+CREATE TABLE `resources` (
+	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
+	`name` text NOT NULL,
+	`description` text,
+	`url` text NOT NULL,
+	`category` text NOT NULL,
+	`public` integer DEFAULT 1 NOT NULL,
+	`type` text NOT NULL
 );

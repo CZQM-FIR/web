@@ -4,8 +4,12 @@
   let { data }: { data: PageData } = $props();
 
   const truncate = (str: string, n: number) => {
-    const words = str.split(' ');
-    return words.length > n ? words.slice(0, n).join(' ') + '...' : str;
+    const firstSentence = str.split('. ')[0];
+    if (firstSentence.length > n) {
+      return firstSentence.slice(0, n) + '...';
+    } else {
+      return firstSentence;
+    }
   };
 </script>
 
