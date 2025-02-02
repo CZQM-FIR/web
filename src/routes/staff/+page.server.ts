@@ -1,8 +1,7 @@
 import type { PageServerLoad } from './$types';
+import { db } from '$lib/db';
 
-export const load = (async ({ locals }) => {
-  const { db } = locals;
-
+export const load = (async () => {
   type StaffUser = {
     cid: number;
     name_full: string;

@@ -1,9 +1,8 @@
 import { events } from '$lib/db/schema';
 import { desc, eq } from 'drizzle-orm';
+import { db } from '$lib/db';
 
-export const getAllEvents = async (locals: App.Locals) => {
-  const { db } = locals;
-
+export const getAllEvents = async () => {
   const eventData = db.query.events.findMany({
     orderBy: [desc(events.start)]
   });
@@ -11,9 +10,7 @@ export const getAllEvents = async (locals: App.Locals) => {
   return eventData;
 };
 
-export const getEventById = async (locals: App.Locals, id: number) => {
-  const { db } = locals;
-
+export const getEventById = async (id: number) => {
   const event = db.query.events.findFirst({
     where: eq(events.id, id)
   });

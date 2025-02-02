@@ -1,8 +1,9 @@
 import { encodeBase32LowerCaseNoPadding, encodeHexLowerCase } from '@oslojs/encoding';
-import { authSessions, users, type AuthSession, type User } from './db/schema';
+import { authSessions, users, type AuthSession, type User } from '$lib/db/schema';
 import { sha256 } from '@oslojs/crypto/sha2';
 import { eq } from 'drizzle-orm';
 import type { RequestEvent } from '@sveltejs/kit';
+import { db } from '$lib/db';
 
 export function generateSessionToken(): string {
   const bytes = new Uint8Array(20);
@@ -11,12 +12,7 @@ export function generateSessionToken(): string {
   return token;
 }
 
-export async function createSession(
-  token: string,
-  userId: number,
-  locals: App.Locals
-): Promise<AuthSession> {
-  const { db } = locals;
+export async function createSession(token: string, userId: number): Promise<AuthSession> {
   const sessionId = encodeHexLowerCase(sha256(new TextEncoder().encode(token)));
   const session: AuthSession = {
     id: sessionId,
@@ -27,12 +23,7 @@ export async function createSession(
   return session;
 }
 
-export async function validateSessionToken(
-  token: string,
-  locals: App.Locals
-): Promise<SessionValidationResult> {
-  const { db } = locals;
-
+export async function validateSessionToken(token: string): Promise<SessionValidationResult> {
   const sessionId = encodeHexLowerCase(sha256(new TextEncoder().encode(token)));
   const result = await db
     .select({ user: users, session: authSessions })
@@ -59,8 +50,7 @@ export async function validateSessionToken(
   return { session, user };
 }
 
-export async function invalidateSession(sessionId: string, locals: App.Locals): Promise<void> {
-  const { db } = locals;
+export async function invalidateSession(sessionId: string): Promise<void> {
   await db.delete(authSessions).where(eq(authSessions.id, sessionId));
 }
 
@@ -87,7 +77,7 @@ export function auth(event: RequestEvent): Promise<SessionValidationResult> {
   if (!token) {
     return Promise.resolve({ session: null, user: null });
   }
-  return validateSessionToken(token, event.locals);
+  return validateSessionToken(token);
 }
 
 export type SessionValidationResult =

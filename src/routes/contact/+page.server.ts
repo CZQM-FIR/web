@@ -2,6 +2,7 @@ import { auth } from '$lib/auth';
 import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import { tickets } from '$lib/db/schema';
+import { db } from '$lib/db';
 
 export const load = (async () => {
   return {};
@@ -18,7 +19,6 @@ export const actions = {
       };
     }
 
-    let { db } = event.locals;
     let data = await event.request.formData();
 
     let categories = ['Controller Feedback', 'Website Feedback', 'Other'];

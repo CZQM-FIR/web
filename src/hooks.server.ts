@@ -12,19 +12,6 @@ if (dev) {
   platform = await getPlatformProxy();
 }
 
-const database: Handle = async ({ event, resolve }) => {
-  if (dev && platform) {
-    event.platform = {
-      ...event.platform,
-      ...platform
-    };
-  }
-
-  event.locals.db = drizzle(event.platform?.env.DB as D1Database, { schema });
-
-  return await resolve(event);
-};
-
 const r2: Handle = async ({ event, resolve }) => {
   event.locals.bucket = event.platform?.env.bucket as R2Bucket;
   return await resolve(event);
@@ -52,4 +39,4 @@ const session: Handle = async ({ event, resolve }) => {
   return await resolve(event);
 };
 
-export const handle = sequence(database, r2, session);
+export const handle = sequence(r2, session);

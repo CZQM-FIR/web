@@ -10,14 +10,14 @@ import {
   setSessionTokenCookie,
   validateSessionToken
 } from '$lib/auth';
+import { db } from '$lib/db';
 
 export const GET: RequestHandler = async (event): Promise<Response> => {
-  const { url, locals, cookies } = event;
-  const { db } = locals;
+  const { url, cookies } = event;
 
   const sessionToken = cookies.get('session');
   if (sessionToken) {
-    const result = await validateSessionToken(sessionToken, locals);
+    const result = await validateSessionToken(sessionToken);
     if (result.user && result.session) {
       let redirect = '/';
       if (event.cookies.get('redirect')) {
@@ -118,7 +118,7 @@ export const GET: RequestHandler = async (event): Promise<Response> => {
   }
 
   const token = generateSessionToken();
-  const session = createSession(token, user.cid, locals);
+  const session = createSession(token, user.cid);
   setSessionTokenCookie(event, token, (await session).expiresAt);
 
   let redirect = '/';

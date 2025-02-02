@@ -1,8 +1,7 @@
 import type { PageServerLoad } from './$types';
+import { db } from '$lib/db';
 
-export const load = (async ({ locals }) => {
-  const db = locals.db;
-
+export const load = (async ({}) => {
   const news = await db.query.news.findMany({
     with: {
       author: {

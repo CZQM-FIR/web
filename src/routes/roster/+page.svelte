@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { getUserRoleByCID } from '$lib/utilities/getUserRole';
   import type { PageData } from './$types';
   import RosterStatusIndicator from './RosterStatusIndicator.svelte';
 

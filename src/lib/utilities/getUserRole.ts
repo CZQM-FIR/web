@@ -1,5 +1,6 @@
 import { users } from '$lib/db/schema';
 import { eq } from 'drizzle-orm';
+import { db } from '$lib/db';
 
 export const getUserRole = (flags: { flag: { name: string } }[]) => {
   if (flags.some((flag) => flag.flag.name === 'chief')) return 'FIR Chief';
@@ -25,9 +26,7 @@ export const getUserRole = (flags: { flag: { name: string } }[]) => {
   else return 'Guest';
 };
 
-export const getUserRoleByCID = async (locals: App.Locals, cid: number) => {
-  const { db } = locals;
-
+export const getUserRoleByCID = async (cid: number) => {
   const user = await db.query.users.findFirst({
     where: eq(users.cid, cid),
     columns: {
