@@ -2,9 +2,9 @@ import { eq } from 'drizzle-orm';
 import type { PageServerLoad } from './$types';
 import { events } from '$lib/db/schema';
 import { redirect } from '@sveltejs/kit';
+import { db } from '$lib/db';
 
-export const load = (async ({ locals, params }) => {
-  const db = locals.db;
+export const load = (async ({ params }) => {
   const eventID = params.eventID;
 
   const event = await db.query.events.findFirst({

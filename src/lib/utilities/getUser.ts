@@ -1,13 +1,8 @@
 import { users } from '$lib/db/schema';
 import { eq } from 'drizzle-orm';
+import { db } from '$lib/db';
 
-export const getUserByCID = async (
-  locals: App.Locals,
-  cid: number,
-  subjectCID: number | null = null
-) => {
-  const { db } = locals;
-
+export const getUserByCID = async (cid: number, subjectCID: number | null = null) => {
   if (subjectCID) {
     const subject = await db.query.users.findFirst({
       where: eq(users.cid, subjectCID),
@@ -48,9 +43,7 @@ export const getUserByCID = async (
   });
 };
 
-export const getAllUsers = async (locals: App.Locals, subjectCID: number | null = null) => {
-  const { db } = locals;
-
+export const getAllUsers = async (subjectCID: number | null = null) => {
   if (subjectCID) {
     const subject = await db.query.users.findFirst({
       where: eq(users.cid, subjectCID),

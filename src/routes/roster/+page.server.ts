@@ -2,10 +2,9 @@ import { eq } from 'drizzle-orm';
 import type { PageServerLoad } from './$types';
 import { users } from '$lib/db/schema';
 import { getUserRole, getUserRoleByCID } from '$lib/utilities/getUserRole';
+import { db } from '$lib/db';
 
-export const load = (async ({ locals }) => {
-  const { db } = locals;
-
+export const load = (async () => {
   const users = (await db.query.users.findMany({
     columns: {
       cid: true,
