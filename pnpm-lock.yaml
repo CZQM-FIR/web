@@ -22,11 +22,11 @@ importers:
         version: 16.4.7
       drizzle-orm:
         specifier: ^0.36.4
-        version: 0.36.4(@cloudflare/workers-types@4.20241112.0)(@libsql/client@0.14.0)
+        version: 0.36.4(@cloudflare/workers-types@4.20250204.0)(@libsql/client@0.14.0)
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20241112.0
-        version: 4.20241112.0
+        version: 4.20250204.0
       '@iconify/svelte':
         specifier: ^4.1.0
         version: 4.1.0(svelte@5.2.8)
@@ -35,7 +35,7 @@ importers:
         version: 3.3.1(@sveltejs/kit@2.8.4(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.2.8)(vite@5.4.14(@types/node@22.10.0)))(svelte@5.2.8)(vite@5.4.14(@types/node@22.10.0)))
       '@sveltejs/adapter-cloudflare':
         specifier: ^4.7.4
-        version: 4.7.4(@sveltejs/kit@2.8.4(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.2.8)(vite@5.4.14(@types/node@22.10.0)))(svelte@5.2.8)(vite@5.4.14(@types/node@22.10.0)))(wrangler@3.99.0(@cloudflare/workers-types@4.20241112.0))
+        version: 4.7.4(@sveltejs/kit@2.8.4(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.2.8)(vite@5.4.14(@types/node@22.10.0)))(svelte@5.2.8)(vite@5.4.14(@types/node@22.10.0)))(wrangler@3.99.0(@cloudflare/workers-types@4.20250204.0))
       '@sveltejs/kit':
         specifier: ^2.0.0
         version: 2.8.4(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.2.8)(vite@5.4.14(@types/node@22.10.0)))(svelte@5.2.8)(vite@5.4.14(@types/node@22.10.0))
@@ -107,7 +107,7 @@ importers:
         version: 5.4.14(@types/node@22.10.0)
       wrangler:
         specifier: ^3.99.0
-        version: 3.99.0(@cloudflare/workers-types@4.20241112.0)
+        version: 3.99.0(@cloudflare/workers-types@4.20250204.0)
 
 packages:
 
@@ -153,8 +153,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@cloudflare/workers-types@4.20241112.0':
-    resolution: {integrity: sha512-Q4p9bAWZrX14bSCKY9to19xl0KMU7nsO5sJ2cTVspHoypsjPUMeQCsjHjmsO2C4Myo8/LPeDvmqFmkyNAPPYZw==}
+  '@cloudflare/workers-types@4.20250204.0':
+    resolution: {integrity: sha512-mWoQbYaP+nYztx9I7q9sgaiNlT54Cypszz0RfzMxYnT5W3NXDuwGcjGB+5B5H5VB8tEC2dYnBRpa70lX94ueaQ==}
 
   '@cspotcode/source-map-support@0.8.1':
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
@@ -2661,7 +2661,7 @@ snapshots:
   '@cloudflare/workerd-windows-64@1.20241218.0':
     optional: true
 
-  '@cloudflare/workers-types@4.20241112.0': {}
+  '@cloudflare/workers-types@4.20250204.0': {}
 
   '@cspotcode/source-map-support@0.8.1':
     dependencies:
@@ -3279,13 +3279,13 @@ snapshots:
       '@sveltejs/kit': 2.8.4(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.2.8)(vite@5.4.14(@types/node@22.10.0)))(svelte@5.2.8)(vite@5.4.14(@types/node@22.10.0))
       import-meta-resolve: 4.1.0
 
-  '@sveltejs/adapter-cloudflare@4.7.4(@sveltejs/kit@2.8.4(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.2.8)(vite@5.4.14(@types/node@22.10.0)))(svelte@5.2.8)(vite@5.4.14(@types/node@22.10.0)))(wrangler@3.99.0(@cloudflare/workers-types@4.20241112.0))':
+  '@sveltejs/adapter-cloudflare@4.7.4(@sveltejs/kit@2.8.4(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.2.8)(vite@5.4.14(@types/node@22.10.0)))(svelte@5.2.8)(vite@5.4.14(@types/node@22.10.0)))(wrangler@3.99.0(@cloudflare/workers-types@4.20250204.0))':
     dependencies:
-      '@cloudflare/workers-types': 4.20241112.0
+      '@cloudflare/workers-types': 4.20250204.0
       '@sveltejs/kit': 2.8.4(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.2.8)(vite@5.4.14(@types/node@22.10.0)))(svelte@5.2.8)(vite@5.4.14(@types/node@22.10.0))
       esbuild: 0.21.5
       worktop: 0.8.0-next.18
-      wrangler: 3.99.0(@cloudflare/workers-types@4.20241112.0)
+      wrangler: 3.99.0(@cloudflare/workers-types@4.20250204.0)
 
   '@sveltejs/kit@2.8.4(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.2.8)(vite@5.4.14(@types/node@22.10.0)))(svelte@5.2.8)(vite@5.4.14(@types/node@22.10.0))':
     dependencies:
@@ -3648,9 +3648,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.36.4(@cloudflare/workers-types@4.20241112.0)(@libsql/client@0.14.0):
+  drizzle-orm@0.36.4(@cloudflare/workers-types@4.20250204.0)(@libsql/client@0.14.0):
     optionalDependencies:
-      '@cloudflare/workers-types': 4.20241112.0
+      '@cloudflare/workers-types': 4.20250204.0
       '@libsql/client': 0.14.0
 
   eastasianwidth@0.2.0: {}
@@ -4682,7 +4682,7 @@ snapshots:
       mrmime: 2.0.0
       regexparam: 3.0.0
 
-  wrangler@3.99.0(@cloudflare/workers-types@4.20241112.0):
+  wrangler@3.99.0(@cloudflare/workers-types@4.20250204.0):
     dependencies:
       '@cloudflare/kv-asset-handler': 0.3.4
       '@esbuild-plugins/node-globals-polyfill': 0.2.3(esbuild@0.17.19)
@@ -4702,7 +4702,7 @@ snapshots:
       workerd: 1.20241218.0
       xxhash-wasm: 1.1.0
     optionalDependencies:
-      '@cloudflare/workers-types': 4.20241112.0
+      '@cloudflare/workers-types': 4.20250204.0
       fsevents: 2.3.3
     transitivePeerDependencies:
       - bufferutil
