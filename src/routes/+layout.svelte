@@ -95,6 +95,7 @@
         <li><a href="/events">Events</a></li>
         <li><a href="/news">News</a></li>
         <li><a href="/contact">Contact Us</a></li>
+        <li><a href="/my">MyCZQM</a></li>
       </ul>
     </div>
     <div class="navbar-end">
@@ -105,7 +106,6 @@
             {data.user.name_full}
           </div>
           <ul class="menu dropdown-content z-[1] rounded-box bg-base-300 p-2 shadow">
-            <li><a href="/my"><Icon icon="mdi:account-edit" /> MyCZQM</a></li>
             <li>
               <a href={`/auth/logout`}><Icon icon="mdi:logout" /> Logout</a>
             </li>
