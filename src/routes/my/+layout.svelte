@@ -20,7 +20,7 @@
 
 <section id="my" class="">
   <div class="container mx-auto min-h-screen">
-    <h1 class="pt-6 text-2xl">{getGreeting()}, Jack!</h1>
+    <h1 class="pt-6 text-2xl">{getGreeting()}, {data.user?.name_first}!</h1>
     <div class="divider"></div>
     <div class="flex flex-row gap-3">
       <!-- sidebar -->
