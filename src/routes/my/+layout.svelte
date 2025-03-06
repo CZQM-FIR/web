@@ -24,13 +24,12 @@
     <div class="divider"></div>
     <div class="flex flex-row gap-3">
       <!-- sidebar -->
-      <div class="w- flex min-h-[30rem] min-w-56 flex-col rounded-2xl bg-base-300 p-2">
+      <div class="w- flex min-h-[30rem] min-w-56 flex-col rounded-2xl p-2">
         <h3 class="m-0 p-0 text-center text-lg font-semibold">MyCZQM</h3>
         <div class="divider m-0 p-0"></div>
         <ul class="mt-1 ps-2">
           <NavLink name="My Profile" icon="mdi:user-outline" href="/my" />
-          <NavLink name="Training" icon="mdi:learn-outline" href="/my/training" />
-          <NavLink name="Preferences" icon="mdi:settings-outline" href="/my/preferences" />
+          <NavLink name="Tickets" icon="mdi:envelope-outline" href="/my/tickets" />
           <NavLink name="Logout" icon="mdi:logout" href="/auth/logout" />
         </ul>
       </div>

@@ -95,7 +95,6 @@
         <li><a href="/events">Events</a></li>
         <li><a href="/news">News</a></li>
         <li><a href="/contact">Contact Us</a></li>
-        <li><a href="/my">MyCZQM</a></li>
       </ul>
     </div>
     <div class="navbar-end">
@@ -107,7 +106,14 @@
           </div>
           <ul class="menu dropdown-content z-[1] rounded-box bg-base-300 p-2 shadow">
             <li>
-              <a href={`/auth/logout`}><Icon icon="mdi:logout" /> Logout</a>
+              <a href="/my" class="flex flex-row gap-3 align-middle">
+                <Icon icon="mdi:computer" /> myCZQM
+              </a>
+            </li>
+            <li>
+              <a href={`/auth/logout`} class="flex flex-row gap-3 align-middle">
+                <Icon icon="mdi:logout" /> Logout
+              </a>
             </li>
           </ul>
         </div>

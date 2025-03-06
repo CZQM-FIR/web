@@ -8,7 +8,7 @@ export const users = sqliteTable('users', {
   name_last: text().notNull(),
   name_full: text().notNull(),
   email: text().notNull().unique(),
-  rating: int()
+  ratingID: int()
     .notNull()
     .references(() => ratings.id),
   division: text(),
@@ -19,7 +19,7 @@ export const users = sqliteTable('users', {
 
 export const usersRelations = relations(users, ({ one, many }) => ({
   rating: one(ratings, {
-    fields: [users.rating],
+    fields: [users.ratingID],
     references: [ratings.id]
   }),
   flags: many(usersToFlags),
