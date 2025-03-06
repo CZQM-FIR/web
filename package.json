@@ -54,5 +54,10 @@
     "@oslojs/encoding": "^1.1.0",
     "dotenv": "^16.4.5",
     "drizzle-orm": "^0.36.4"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@sveltejs/kit"
+    ]
   }
 }
