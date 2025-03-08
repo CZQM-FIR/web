@@ -34,7 +34,7 @@
         >
           <option disabled selected value={''}>Select a Category</option>
           {#each categories as category, i}
-            <option value={i.toString()}>{category}</option>
+            <option value={i}>{category}</option>
           {/each}
         </select>
       </label>
