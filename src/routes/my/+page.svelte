@@ -10,7 +10,7 @@
   let user = $state(data.user!);
 </script>
 
-<div>
+<div class="flex flex-row flex-wrap gap-3">
   <div class="rounded-lg bg-base-300 p-5">
     <h3 class="text-xl font-semibold">Your Account</h3>
     <div class="mt-2 flex flex-col">
@@ -31,12 +31,28 @@
             VATSIM. This is the best way to update your name and email.
           </p>
           <p class="mt-3">
-            2) Every on a regular basis, we reach out to VATSIM to retrive the latest information
-            for all users. This is the best way to update your rating
+            2) On a regular basis, we reach out to VATSIM to retrive the latest information for all
+            users. This is the best way to update your rating
           </p>
-          <label class="modal-backdrop" for="incorrect-info">Close</label>
+          <div class="modal-action">
+            <label class="btn" for="incorrect-info">Close</label>
+          </div>
         </div>
       </div>
     </div>
+  </div>
+  <div class="flex max-w-96 flex-col gap-2 rounded-lg bg-base-300 p-5">
+    <h4 class="text-md font-semibold">Looking for your controlling hours?</h4>
+    <p>
+      They'll be back here soon! Don't worry, we're still tracking everything like before. Check
+      back here soon to see your past controlling history.
+    </p>
+    <p>
+      For now, checkout the <a
+        class="link"
+        target="_blank"
+        href={`https://stats.vatsim.net/stats/${user.cid}`}>VATSIM stats page</a
+      >!
+    </p>
   </div>
 </div>
