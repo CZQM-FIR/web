@@ -13,7 +13,8 @@ export const tickets = sqliteTable('tickets', {
   typeId: int('type_id')
     .notNull()
     .references(() => ticketType.id, { onDelete: 'cascade' }),
-  status: text().notNull().default('open')
+  status: text().notNull().default('open'),
+  createdAt: int('created_at').notNull().default(new Date().getTime())
 });
 
 export const ticketRelations = relations(tickets, ({ one, many }) => ({
@@ -24,7 +25,8 @@ export const ticketRelations = relations(tickets, ({ one, many }) => ({
   author: one(users, {
     fields: [tickets.authorId],
     references: [users.cid]
-  })
+  }),
+  messages: many(ticketMessages)
 }));
 
 export type Ticket = InferSelectModel<typeof tickets>;
@@ -37,7 +39,8 @@ export const ticketMessages = sqliteTable('ticket_messages', {
   authorId: int('author_id')
     .notNull()
     .references(() => users.cid, { onDelete: 'cascade' }),
-  message: text().notNull()
+  message: text().notNull(),
+  createdAt: int('created_at').notNull().default(new Date().getTime())
 });
 
 export const ticketMessagesRelations = relations(ticketMessages, ({ one, many }) => ({
