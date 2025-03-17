@@ -9,7 +9,7 @@ export const load = (async () => {
     columns: {
       cid: true,
       name_full: true,
-      rating: true
+      ratingID: true
     },
     with: {
       flags: {

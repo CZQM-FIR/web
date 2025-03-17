@@ -1,7 +1,6 @@
 import { relations, type InferSelectModel } from 'drizzle-orm';
 import { int, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 import { users } from '.';
-import { tick } from 'svelte';
 
 export const tickets = sqliteTable('tickets', {
   id: int().primaryKey({ autoIncrement: true }),
