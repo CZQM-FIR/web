@@ -1,8 +1,8 @@
-import { auth } from '$lib/auth';
+import { auth } from '$lib/czqm/auth';
 import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
-import { tickets } from '$lib/db/schema';
-import { db } from '$lib/db';
+import { tickets } from '$lib/czqm/db/schema';
+import { db } from '$lib/czqm/db';
 
 export const load = (async () => {
   return {};

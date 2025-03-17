@@ -1,9 +1,13 @@
 import { dev } from '$app/environment';
 import type { Handle } from '@sveltejs/kit';
 import { drizzle } from 'drizzle-orm/d1';
-import * as schema from '$lib/db/schema';
+import * as schema from '$lib/czqm/db/schema';
 import { sequence } from '@sveltejs/kit/hooks';
-import { deleteSessionTokenCookie, setSessionTokenCookie, validateSessionToken } from '$lib/auth';
+import {
+  deleteSessionTokenCookie,
+  setSessionTokenCookie,
+  validateSessionToken
+} from '$lib/czqm/auth';
 
 let platform: App.Platform;
 
@@ -27,7 +31,7 @@ const session: Handle = async ({ event, resolve }) => {
     return resolve(event);
   }
 
-  const { session, user } = await validateSessionToken(token, locals);
+  const { session, user } = await validateSessionToken(token);
   if (session !== null) {
     setSessionTokenCookie(event, token, session.expiresAt);
   } else {

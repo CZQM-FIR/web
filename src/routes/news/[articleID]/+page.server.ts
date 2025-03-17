@@ -1,8 +1,8 @@
 import { eq } from 'drizzle-orm';
 import type { PageServerLoad } from './$types';
-import { news } from '$lib/db/schema';
+import { news } from '$lib/czqm/db/schema';
 import { redirect } from '@sveltejs/kit';
-import { db } from '$lib/db';
+import { db } from '$lib/czqm/db';
 
 export const load = (async ({ params }) => {
   const articleID = params.articleID;

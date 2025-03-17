@@ -1,7 +1,7 @@
 // See https://svelte.dev/docs/kit/types#app.d.ts
 // for information about these interfaces
 
-import * as schema from '$lib/db/schema';
+import * as schema from '$lib/czqm/db/schema';
 
 declare global {
   namespace App {
