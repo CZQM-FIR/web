@@ -3,6 +3,7 @@
   import type { LayoutData } from './$types';
   import Icon from '@iconify/svelte';
   import NavLink from './NavLink.svelte';
+  import { PUBLIC_OVERSEER_URL } from '$env/static/public';
 
   let { data, children }: { data: LayoutData; children: Snippet } = $props();
 
@@ -31,6 +32,9 @@
           <NavLink name="My Profile" icon="mdi:user-outline" href="/my" />
           <NavLink name="Tickets" icon="mdi:envelope-outline" href="/my/tickets" />
           <NavLink name="Logout" icon="mdi:logout" href="/auth/logout" />
+          {#if data.user.flags.filter((f) => f.flag.name === 'staff').length === 0}
+            <NavLink name="Overseer" icon="mdi:logout" href={PUBLIC_OVERSEER_URL} />
+          {/if}
         </ul>
       </div>
       <!-- content -->
