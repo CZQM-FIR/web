@@ -31,8 +31,8 @@ importers:
         specifier: ^4.1.0
         version: 4.2.0(svelte@5.28.1)
       '@sveltejs/adapter-auto':
-        specifier: ^4.0.0
-        version: 4.0.0(@sveltejs/kit@2.20.7(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.28.1)(vite@5.4.18(@types/node@22.14.1)))(svelte@5.28.1)(vite@5.4.18(@types/node@22.14.1)))
+        specifier: ^6.0.0
+        version: 6.0.0(@sveltejs/kit@2.20.7(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.28.1)(vite@5.4.18(@types/node@22.14.1)))(svelte@5.28.1)(vite@5.4.18(@types/node@22.14.1)))
       '@sveltejs/adapter-cloudflare':
         specifier: ^5.0.0
         version: 5.1.0(@sveltejs/kit@2.20.7(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.28.1)(vite@5.4.18(@types/node@22.14.1)))(svelte@5.28.1)(vite@5.4.18(@types/node@22.14.1)))(wrangler@3.114.6(@cloudflare/workers-types@4.20250418.0))
@@ -1454,8 +1454,8 @@ packages:
     peerDependencies:
       acorn: ^8.9.0
 
-  '@sveltejs/adapter-auto@4.0.0':
-    resolution: {integrity: sha512-kmuYSQdD2AwThymQF0haQhM8rE5rhutQXG4LNbnbShwhMO4qQGnKaaTy+88DuNSuoQDi58+thpq8XpHc1+oEKQ==}
+  '@sveltejs/adapter-auto@6.0.0':
+    resolution: {integrity: sha512-7mR2/G7vlXakaOj6QBSG9dwBfTgWjV+UnEMB5Z6Xu0ZbdXda6c0su1fNkg0ab0zlilSkloMA2NjCna02/DR7sA==}
     peerDependencies:
       '@sveltejs/kit': ^2.0.0
 
@@ -3782,7 +3782,7 @@ snapshots:
     dependencies:
       acorn: 8.14.1
 
-  '@sveltejs/adapter-auto@4.0.0(@sveltejs/kit@2.20.7(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.28.1)(vite@5.4.18(@types/node@22.14.1)))(svelte@5.28.1)(vite@5.4.18(@types/node@22.14.1)))':
+  '@sveltejs/adapter-auto@6.0.0(@sveltejs/kit@2.20.7(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.28.1)(vite@5.4.18(@types/node@22.14.1)))(svelte@5.28.1)(vite@5.4.18(@types/node@22.14.1)))':
     dependencies:
       '@sveltejs/kit': 2.20.7(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.28.1)(vite@5.4.18(@types/node@22.14.1)))(svelte@5.28.1)(vite@5.4.18(@types/node@22.14.1))
       import-meta-resolve: 4.1.0
