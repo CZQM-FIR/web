@@ -1,4 +1,4 @@
-import { deleteSessionTokenCookie, invalidateSession } from '$lib/auth';
+import { deleteSessionTokenCookie, invalidateSession } from '$lib/czqm/auth';
 import type { RequestHandler } from './$types';
 
 export const GET: RequestHandler = async (event) => {

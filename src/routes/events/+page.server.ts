@@ -1,5 +1,5 @@
 import type { PageServerLoad } from './$types';
-import { db } from '$lib/db';
+import { db } from '$lib/czqm/db';
 
 export const load = (async () => {
   const events = await db.query.events.findMany();

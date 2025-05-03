@@ -1,8 +1,8 @@
-import { auth } from '$lib/auth';
+import { auth } from '$lib/czqm/auth';
 import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
-import { tickets } from '$lib/db/schema';
-import { db } from '$lib/db';
+import { tickets } from '$lib/czqm/db/schema';
+import { db } from '$lib/czqm/db';
 
 export const load = (async () => {
   return {};
@@ -21,14 +21,20 @@ export const actions = {
 
     let data = await event.request.formData();
 
-    let categories = ['Controller Feedback', 'Website Feedback', 'Other'];
+    const categories = ['Other', 'Controller Feedback', 'Website Feedback'];
 
-    if (!data.get('category') || !categories.includes(data.get('category')!.toString())) {
+    if (
+      !data.get('category') ||
+      0 > Number(data.get('category')) ||
+      Number(data.get('category')) > categories.length
+    ) {
       return {
         status: '400',
         message: 'Error 400: Invalid category'
       };
     }
+
+    let category = Number(data.get('category'));
 
     if (!data.get('subject')) {
       return {
@@ -44,7 +50,6 @@ export const actions = {
       };
     }
 
-    let category = Number(data.get('category')!.toString());
     let subject = data.get('subject')!.toString();
     let message = data.get('message')!.toString();
 
@@ -71,7 +76,8 @@ export const actions = {
 
     return {
       status: '200',
-      message: 'Ticket Submitted! We will get back to you as soon as possible.'
+      message:
+        'Ticket Submitted! We will get back to you as soon as possible. Please see your tickets in myCZQM for a response.'
     };
   }
 };

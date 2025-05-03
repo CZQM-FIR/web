@@ -1,6 +1,6 @@
-import { resources } from '$lib/db/schema';
+import { resources } from '$lib/czqm/db/schema';
 import type { PageServerLoad } from './$types';
-import { db } from '$lib/db';
+import { db } from '$lib/czqm/db';
 
 export const load = (async ({}) => {
   const pilotResources = await db.query.resources.findMany({

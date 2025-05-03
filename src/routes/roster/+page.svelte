@@ -1,17 +1,39 @@
 <script lang="ts">
   import type { PageData } from './$types';
   import RosterStatusIndicator from './RosterStatusIndicator.svelte';
+  import type { RosterPosition, RosterStatus, SoloEndorsement } from '$lib/czqm/db/schema';
 
   let { data }: { data: PageData } = $props();
 
   let controllers: any[] = $state([]);
   let visitors: any[] = $state([]);
 
-  const getRosterStatus = (flags: any[], position: string) => {
-    if (flags.some((flag) => flag.flag.name === `roster-${position}-cert`)) return 1;
-    else if (flags.some((flag) => flag.flag.name === `roster-${position}-solo`)) return 0;
-    else if (flags.some((flag) => flag.flag.name === `roster-${position}-sup`)) return -2;
-    else return -1;
+  const getRosterStatus = (userData: any, position: RosterPosition) => {
+    if (userData.roster.filter((r: RosterStatus) => r.position === position).length === 0) {
+      return -1; // N/A
+    } else if (
+      userData.soloEndorsements.filter((r: any) => {
+        if (
+          r.position.callsign.toLowerCase().includes(position) &&
+          r.expiresAt > new Date().getTime() &&
+          userData.roster.filter((r: RosterStatus) => r.position === position)[0].status === 1
+        ) {
+          return 1;
+        }
+      }).length > 0
+    ) {
+      return 1; // solo
+    } else if (
+      userData.roster.filter((r: RosterStatus) => r.position === position)[0].status === 0
+    ) {
+      return 0; // training
+    } else if (
+      userData.roster.filter((r: RosterStatus) => r.position === position)[0].status === 2
+    ) {
+      return 2; // certified
+    } else {
+      return -1; // N/A
+    }
   };
 
   $effect(() => {
@@ -31,7 +53,7 @@
   <div class="container mx-auto mb-12">
     <h1 class="mt-6 text-2xl">Roster</h1>
     <div class="divider"></div>
-    <table class="table table-zebra">
+    <table class="table-zebra table">
       <thead>
         <tr>
           <th></th>
@@ -55,10 +77,10 @@
             </th>
             <td>{controller.cid}</td>
             <td></td>
-            <RosterStatusIndicator roster={getRosterStatus(controller.flags, 'gnd')} />
-            <RosterStatusIndicator roster={getRosterStatus(controller.flags, 'twr')} />
-            <RosterStatusIndicator roster={getRosterStatus(controller.flags, 'app')} />
-            <RosterStatusIndicator roster={getRosterStatus(controller.flags, 'ctr')} />
+            <RosterStatusIndicator roster={getRosterStatus(controller, 'gnd')} />
+            <RosterStatusIndicator roster={getRosterStatus(controller, 'twr')} />
+            <RosterStatusIndicator roster={getRosterStatus(controller, 'app')} />
+            <RosterStatusIndicator roster={getRosterStatus(controller, 'ctr')} />
           </tr>
         {/each}
       </tbody>

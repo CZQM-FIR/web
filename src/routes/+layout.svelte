@@ -11,8 +11,8 @@
 </script>
 
 <!-- nav bar -->
-<nav class="w-screen bg-base-300">
-  <div class="container navbar top-0 mx-auto">
+<nav class="bg-base-300 w-screen">
+  <div class="navbar top-0 container mx-auto">
     <div class="navbar-start">
       <div class="dropdown">
         <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -30,7 +30,7 @@
             /></svg
           >
         </div>
-        <ul class="menu dropdown-content menu-sm z-50 mt-3 rounded-box bg-base-300 p-2 shadow">
+        <ul class="menu dropdown-content menu-sm rounded-box bg-base-300 z-50 mt-3 p-2 shadow-sm">
           <li>
             <a href="/about">About Us</a>
           </li>
@@ -72,7 +72,7 @@
         <li>
           <div class="dropdown dropdown-bottom">
             <div tabindex="0" role="button">Controllers</div>
-            <ul class="menu dropdown-content z-[1] w-52 rounded-box bg-base-300 p-2 shadow">
+            <ul class="menu dropdown-content rounded-box bg-base-300 z-1 w-52 p-2 shadow-sm">
               <li><a href="/staff"><Icon icon="mdi:administrator" /> Staff</a></li>
               <li>
                 <a href="/roster"><Icon icon="mdi:account-group" /> Roster</a>
@@ -84,7 +84,7 @@
         <li>
           <div class="dropdown dropdown-bottom">
             <div tabindex="0" role="button">Pilots</div>
-            <ul class="menu dropdown-content z-[1] w-52 rounded-box bg-base-300 p-2 shadow">
+            <ul class="menu dropdown-content rounded-box bg-base-300 z-1 w-52 p-2 shadow-sm">
               <li>
                 <a href="/pilot-resources"><Icon icon="mdi:clipboard-text" /> Resources</a>
               </li>
@@ -104,10 +104,16 @@
             <Icon icon="mdi:account" />
             {data.user.name_full}
           </div>
-          <ul class="menu dropdown-content z-[1] rounded-box bg-base-300 p-2 shadow">
-            <li><a href="/my"><Icon icon="mdi:account-edit" /> MyCZQM</a></li>
+          <ul class="menu dropdown-content rounded-box bg-base-300 z-1 p-2 shadow-sm">
             <li>
-              <a href={`/auth/logout`}><Icon icon="mdi:logout" /> Logout</a>
+              <a href="/my" class="flex flex-row gap-3 align-middle">
+                <Icon icon="mdi:computer" /> myCZQM
+              </a>
+            </li>
+            <li>
+              <a href={`/auth/logout`} class="flex flex-row gap-3 align-middle">
+                <Icon icon="mdi:logout" /> Logout
+              </a>
             </li>
           </ul>
         </div>
@@ -150,45 +156,42 @@
 </main>
 
 <!-- footer -->
-<footer class="bg-base-300 py-10 text-base-content md:p-10">
-  <div class="footer max-md:footer-center md:container md:mx-auto">
-    <aside>
-      <img src={CZQMLogo} alt="" class="hidden md:block" />
-      <p>
-        <strong>Moncton Gander FIR</strong><br />Not affiliated with Nav Canada.<br />For flight
-        simulation use only.
-      </p>
-    </aside>
-    <nav>
-      <h6 class="footer-title">Policies</h6>
-      <a href="/privacy" class="link-hover link">Privacy Policy</a>
-      <a href="/branding" class="link-hover link">Branding</a>
-      <a href="/sop" class="link-hover link">SOPs</a>
-    </nav>
-    <nav>
-      <h6 class="footer-title">Quick Links</h6>
-      <a href="/about" class="link-hover link">About Us</a>
-      <a href="https://wiki.czqm.ca/en/faqs" class="link-hover link">FAQs</a>
-      <a href="/join" class="link-hover link">Join Us</a>
-      <a href="/contact" class="link-hover link">Contact Us</a>
-      <a href="https://wiki.czqm.ca" class="link-hover link">Wiki</a>
-    </nav>
-    <nav>
-      <h6 class="footer-title">Connect With Us</h6>
-      <a href="https://twitter.com/czqm_fir" class="link-hover link flex items-center"
-        ><Icon icon="mdi:twitter" class="mr-1" /> Twitter</a
-      >
-      <a href="https://www.facebook.com/CZQMFIR/" class="link-hover link flex items-center"
-        ><Icon icon="mdi:facebook" class="mr-1" /> FaceBook</a
-      >
-      <a
-        href="https://www.youtube.com/channel/UCS5H_U3h6edXWashMjQpuAg"
-        class="link-hover link flex items-center"
-        ><Icon icon="mdi:youtube" class="mr-1" /> Youtube</a
-      >
-      <a href="/portal/discord" class="link-hover link flex items-center"
-        ><Icon icon="ic:baseline-discord" class="mr-1" /> Discord</a
-      >
-    </nav>
-  </div>
+<footer class="footer sm:footer-horizontal bg-base-200 text-base-content p-10">
+  <aside>
+    <img src={CZQMLogo} alt="" class="hidden md:block" />
+    <p>
+      <strong>Moncton Gander FIR</strong><br />Not affiliated with Nav Canada.<br />For flight
+      simulation use only.
+    </p>
+  </aside>
+  <nav>
+    <h6 class="footer-title">Policies</h6>
+    <a href="/privacy" class="link-hover link">Privacy Policy</a>
+    <a href="/branding" class="link-hover link">Branding</a>
+    <a href="/sop" class="link-hover link">SOPs</a>
+  </nav>
+  <nav>
+    <h6 class="footer-title">Quick Links</h6>
+    <a href="/about" class="link-hover link">About Us</a>
+    <a href="https://wiki.czqm.ca/en/faqs" class="link-hover link">FAQs</a>
+    <a href="/join" class="link-hover link">Join Us</a>
+    <a href="/contact" class="link-hover link">Contact Us</a>
+    <a href="https://wiki.czqm.ca" class="link-hover link">Wiki</a>
+  </nav>
+  <nav>
+    <h6 class="footer-title">Connect With Us</h6>
+    <a href="https://twitter.com/czqm_fir" class="link-hover link flex items-center"
+      ><Icon icon="mdi:twitter" class="mr-1" /> Twitter</a
+    >
+    <a href="https://www.facebook.com/CZQMFIR/" class="link-hover link flex items-center"
+      ><Icon icon="mdi:facebook" class="mr-1" /> FaceBook</a
+    >
+    <a
+      href="https://www.youtube.com/channel/UCS5H_U3h6edXWashMjQpuAg"
+      class="link-hover link flex items-center"><Icon icon="mdi:youtube" class="mr-1" /> Youtube</a
+    >
+    <a href="/portal/discord" class="link-hover link flex items-center"
+      ><Icon icon="ic:baseline-discord" class="mr-1" /> Discord</a
+    >
+  </nav>
 </footer>

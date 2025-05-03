@@ -1,7 +1,7 @@
 import type { RequestEvent } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { VATSIM_CLIENT_ID, VATSIM_CLIENT_SECRET, VATSIM_URL } from '$env/static/private';
-import { users } from '$lib/db/schema';
+import { users } from '$lib/czqm/db/schema';
 import { eq } from 'drizzle-orm';
 import {
   createSession,
@@ -9,8 +9,8 @@ import {
   generateSessionToken,
   setSessionTokenCookie,
   validateSessionToken
-} from '$lib/auth';
-import { db } from '$lib/db';
+} from '$lib/czqm/auth';
+import { db } from '$lib/czqm/db';
 
 export const GET: RequestHandler = async (event): Promise<Response> => {
   const { url, cookies } = event;
@@ -100,7 +100,7 @@ export const GET: RequestHandler = async (event): Promise<Response> => {
         division: user.vatsim.division?.id,
         region: user.vatsim.region?.id,
         subdivision: user.vatsim.subdivision?.id,
-        rating: user.vatsim.rating.id
+        ratingID: user.vatsim.rating.id
       })
       .where(eq(users.cid, user.cid));
   } else {
@@ -113,7 +113,7 @@ export const GET: RequestHandler = async (event): Promise<Response> => {
       division: user.vatsim.division?.id,
       region: user.vatsim.region?.id,
       subdivision: user.vatsim.subdivision?.id,
-      rating: user.vatsim.rating.id
+      ratingID: user.vatsim.rating.id
     });
   }
 

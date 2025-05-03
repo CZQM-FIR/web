@@ -24,12 +24,9 @@
       {/if}
       {#each data.upcomingEvents as event}
         <a href="/events/{event.id}">
-          <div class="card card-compact w-96 bg-base-300 shadow-xl">
+          <div class="card card-compact bg-base-300 w-96 shadow-xl">
             <figure>
-              <img
-                src="https://files.czqm.ca/event/{event.image}"
-                alt="{event.name} Banner Image"
-              />
+              <img src="https://files.czqm.ca/{event.image}" alt="{event.name} Banner Image" />
             </figure>
             <div class="card-body">
               <div class="flex flex-row items-center gap-3">
@@ -64,7 +61,7 @@
       <div class="flex flex-row flex-wrap">
         {#each data.pastEvents as event}
           <a href="/events/{event.id}">
-            <div class="card card-compact w-96 bg-base-300 shadow-xl">
+            <div class="card card-compact bg-base-300 w-96 shadow-xl">
               <figure>
                 <img
                   src="https://files.czqm.ca/event/{event.image}"

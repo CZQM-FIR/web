@@ -25,9 +25,9 @@
     <div class="divider"></div>
     <div class="grid grid-cols-2 grid-rows-1 gap-3">
       {#if article.image}
-        <a href="https://files.czqm.ca/news/{article.image}" class="cursor-zoom-in" target="_blank">
+        <a href="https://files.czqm.ca/{article.image}" class="cursor-zoom-in" target="_blank">
           <img
-            src="https://files.czqm.ca/news/{article.image}"
+            src="https://files.czqm.ca/{article.image}"
             alt="{article.title} Banner Image"
             class="rounded-md"
           />

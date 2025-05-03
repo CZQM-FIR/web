@@ -22,73 +22,68 @@
     </p>
 
     <form class="mt-3 flex flex-col gap-4" method="POST">
-      <label class="form-control w-full max-w-sm">
+      <fieldset class="fieldset w-full max-w-sm">
         <div class="label">
           <span class="label-text">Feedback Category</span>
         </div>
-        <select
-          class="select select-bordered"
-          bind:value={feedbackCategory}
-          required
-          name="category"
-        >
+        <select class="select" bind:value={feedbackCategory} required name="category">
           <option disabled selected value={''}>Select a Category</option>
           {#each categories as category, i}
-            <option value={i.toString()}>{category}</option>
+            <option value={i}>{category}</option>
           {/each}
         </select>
-      </label>
+      </fieldset>
 
       {#if feedbackCategory === '1'}
-        <label class="form-control w-full max-w-sm">
+        <fieldset class="fieldset w-full max-w-sm">
           <div class="label">
             <span class="label-text">Controller CID or Name</span>
           </div>
           <input
             type="text"
-            class="input input-bordered w-full max-w-sm"
+            class="input w-full max-w-sm"
             bind:value={controllerCID}
             required={feedbackCategory === '1'}
             name="controller"
           />
           <div class="label"></div>
-        </label>
+        </fieldset>
       {:else if feedbackCategory === '2'}
-        <label class="form-control w-full max-w-sm">
+        <fieldset class="fieldset w-full max-w-sm">
           <div class="label">
             <span class="label-text">Page</span>
           </div>
           <input
             type="text"
-            class="input input-bordered w-full max-w-sm"
+            class="input w-full max-w-sm"
             bind:value={feedbackPage}
             required={feedbackCategory === '2'}
             name="page"
           />
           <div class="label"></div>
-        </label>
+        </fieldset>
       {/if}
 
-      <label class="form-control w-full max-w-sm">
+      <fieldset class="fieldset w-full max-w-sm">
         <div class="label">
           <span class="label-text">Subject</span>
         </div>
         <input
           type="text"
-          class="input input-bordered w-full max-w-sm"
+          class="input w-full max-w-sm"
           bind:value={subject}
           required
           name="subject"
         />
         <div class="label"></div>
-      </label>
+      </fieldset>
 
-      <label class="form-control">
+      <fieldset class="fieldset">
         <div class="label">
           <span class="label-text">{feedbackCategory === '2' ? 'Message' : 'Feedback'}</span>
         </div>
         <textarea
-          class="textarea textarea-bordered h-24"
+          class="textarea h-24"
           disabled={feedbackCategory === ''}
           placeholder={feedbackCategory === ''
             ? 'Please select a feedback category first!'
@@ -98,7 +93,7 @@
           name="message"
         ></textarea>
         <div class="label"></div>
-      </label>
+      </fieldset>
 
       <div>
         <button

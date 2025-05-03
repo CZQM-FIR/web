@@ -24,11 +24,11 @@
     <div class="flex flex-row flex-wrap gap-3">
       {#each data.news as article}
         <a href="/news/{article.id}">
-          <div class="card card-compact w-96 bg-base-300 shadow-xl">
+          <div class="card card-compact bg-base-300 w-96 shadow-xl">
             {#if article.image}
               <figure>
                 <img
-                  src="https://files.czqm.ca/news/{article.image}"
+                  src="https://files.czqm.ca/{article.image}"
                   alt="{article.title} Banner Image"
                 />
               </figure>

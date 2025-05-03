@@ -1,8 +1,7 @@
 // See https://svelte.dev/docs/kit/types#app.d.ts
 // for information about these interfaces
 
-import type { DrizzleD1Database } from 'drizzle-orm/d1';
-import * as schema from '$lib/db/schema';
+import * as schema from '$lib/czqm/db/schema';
 
 declare global {
   namespace App {

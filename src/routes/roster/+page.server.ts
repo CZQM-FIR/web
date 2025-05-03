@@ -1,15 +1,15 @@
 import { eq } from 'drizzle-orm';
 import type { PageServerLoad } from './$types';
-import { users } from '$lib/db/schema';
-import { getUserRole, getUserRoleByCID } from '$lib/utilities/getUserRole';
-import { db } from '$lib/db';
+import { users } from '$lib/czqm/db/schema';
+import { getUserRole, getUserRoleByCID } from '$lib/czqm/utilities/getUserRole';
+import { db } from '$lib/czqm/db';
 
 export const load = (async () => {
   const users = (await db.query.users.findMany({
     columns: {
       cid: true,
       name_full: true,
-      rating: true
+      ratingID: true
     },
     with: {
       flags: {
@@ -21,7 +21,13 @@ export const load = (async () => {
           }
         }
       },
-      rating: true
+      rating: true,
+      roster: true,
+      soloEndorsements: {
+        with: {
+          position: true
+        }
+      }
     }
   })) as Array<{
     cid: number;

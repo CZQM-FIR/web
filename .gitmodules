@@ -1,0 +1,3 @@
+[submodule "src/lib/czqm"]
+	path = src/lib/czqm
+	url = https://github.com/CZQM-FIR/lib.git
