@@ -21,7 +21,13 @@ export const load = (async () => {
           }
         }
       },
-      rating: true
+      rating: true,
+      roster: true,
+      soloEndorsements: {
+        with: {
+          position: true
+        }
+      }
     }
   })) as Array<{
     cid: number;

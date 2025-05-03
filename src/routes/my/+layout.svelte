@@ -29,11 +29,11 @@
         <h3 class="m-0 p-0 text-center text-lg font-semibold">MyCZQM</h3>
         <div class="divider m-0 p-0"></div>
         <ul class="mt-1 ps-2">
-          <NavLink name="My Profile" icon="mdi:user-outline" href="/my" />
+          <NavLink name="My Profile" icon="mdi:user" href="/my" />
           <NavLink name="Tickets" icon="mdi:envelope-outline" href="/my/tickets" />
           <NavLink name="Logout" icon="mdi:logout" href="/auth/logout" />
-          {#if data.user.flags.filter((f) => f.flag.name === 'staff').length === 0}
-            <NavLink name="Overseer" icon="mdi:logout" href={PUBLIC_OVERSEER_URL} />
+          {#if data.user.flags.filter((f) => f.flag.name === 'staff').length === 1}
+            <NavLink name="Overseer" icon="mdi:users" href={PUBLIC_OVERSEER_URL} external />
           {/if}
         </ul>
       </div>

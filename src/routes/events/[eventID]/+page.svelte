@@ -29,9 +29,9 @@
     </div>
     <div class="divider"></div>
     <div class="grid grid-cols-2 grid-rows-1 gap-3">
-      <a href="https://files.czqm.ca/event/{event.image}" class="cursor-zoom-in" target="_blank">
+      <a href="https://files.czqm.ca/{event.image}" class="cursor-zoom-in" target="_blank">
         <img
-          src="https://files.czqm.ca/event/{event.image}"
+          src="https://files.czqm.ca/{event.image}"
           alt="{event.name} Banner Image"
           class="rounded-md"
         />
