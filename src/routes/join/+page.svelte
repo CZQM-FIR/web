@@ -23,7 +23,7 @@
           Canada's best Instructors and Mentors as well as an amazing community.
         </p>
         <p>
-          At Moncton/Gander FIR, we strive to provide you with the best training as a virtual air
+          In the Moncton/Gander FIR, we strive to provide you with the best training as a virtual air
           traffic controller in order for virtual pilots that fly in airspace, to receive the high
           level of ATC they have come to expect. Sign up with CZQM/QX FIR today and start your
           virtual air traffic control career.
