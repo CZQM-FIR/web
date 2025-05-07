@@ -15,10 +15,10 @@
       userData.soloEndorsements.filter((r: any) => {
         if (
           r.position.callsign.toLowerCase().includes(position) &&
-          r.expiresAt > new Date().getTime() &&
-          userData.roster.filter((r: RosterStatus) => r.position === position)[0].status === 1
+          r.expiresAt > new Date().getTime()
         ) {
-          return 1;
+          console.log('soloEndorsement', r);
+          return true;
         }
       }).length > 0
     ) {
