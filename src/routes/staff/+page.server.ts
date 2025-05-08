@@ -37,6 +37,32 @@ export const load = (async () => {
 
   const staff = users.filter((user) => user.flags.some((flag) => flag.flag.name === 'staff'));
 
+  let sorting = {
+    chief: 5,
+    deputy: 4,
+    'chief-instructor': 3,
+    events: 2,
+    sector: 1,
+    web: 0
+  };
+
+  staff.sort((a, b) => {
+    let aScore = 0;
+    let bScore = 0;
+
+    for (const flag of a.flags) {
+      if (flag.flag.name in sorting)
+        aScore = Math.max(aScore, sorting[flag.flag.name as keyof typeof sorting]);
+    }
+
+    for (const flag of b.flags) {
+      if (flag.flag.name in sorting)
+        bScore = Math.max(bScore, sorting[flag.flag.name as keyof typeof sorting]);
+    }
+
+    return bScore - aScore;
+  });
+
   staff.map((staff) => {
     let roles = [];
 
