@@ -15,3 +15,31 @@ export const load = (async ({ locals }) => {
 
   return { user };
 }) satisfies PageServerLoad;
+
+export const actions = {
+  updateBio: async ({ request, locals }) => {
+    const data = await request.formData();
+    const bio = data.get('bio')?.toString() || '';
+
+    try {
+      await db
+        .update(schema.users)
+        .set({ bio })
+        .where(eq(schema.users.cid, locals.user!.cid))
+        .execute();
+
+      return {
+        ok: true,
+        message: 'Bio updated successfully',
+        bio
+      };
+    } catch (e) {
+      console.error(e);
+      return {
+        ok: false,
+        message: 'Failed to update bio',
+        bio
+      };
+    }
+  }
+};

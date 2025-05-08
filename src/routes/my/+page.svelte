@@ -1,23 +1,21 @@
 <script lang="ts">
+  import { enhance } from '$app/forms';
   import type { PageData } from './$types';
 
-  interface Props {
-    data: PageData;
-  }
-
-  let { data = $bindable() }: Props = $props();
+  let { data = $bindable(), form } = $props();
 
   let user = $state(data.user!);
 </script>
 
 <div class="flex flex-row flex-wrap gap-3">
-  <div class="rounded-lg bg-base-300 p-5">
+  <div class="bg-base-300 rounded-lg p-5">
     <h3 class="text-xl font-semibold">Your Account</h3>
     <div class="mt-2 flex flex-col">
       <p>{user.name_full} {user.cid}</p>
       <p class="font-light">{user.rating.long} ({user.rating.short})</p>
+      <p class="font-light">{user.email}</p>
 
-      <label for="incorrect-info" class="mt-3 cursor-pointer text-sm italic text-primary"
+      <label for="incorrect-info" class="text-primary mt-3 cursor-pointer text-sm italic"
         >Incorrect Information?</label
       >
 
@@ -41,7 +39,22 @@
       </div>
     </div>
   </div>
-  <div class="flex max-w-96 flex-col gap-2 rounded-lg bg-base-300 p-5">
+  <div class="bg-base-300 flex max-w-96 flex-col gap-2 rounded-lg p-5">
+    <h4 class="text-md font-semibold">Controller Bio</h4>
+    <p>This bio will appear on your public profile page</p>
+    <form action="?/updateBio" method="post" use:enhance>
+      <textarea class="textarea" name="bio" value={form?.bio || user.bio || ''}></textarea>
+      <div class="flex flex-row items-center gap-3">
+        <button type="submit" class="btn btn-primary btn-outline mt-2">Save</button>
+        {#if form}
+          <p class="text-sm {form.ok ? 'text-success' : 'text-error'}">
+            {form.ok ? '' : 'Error: '}{form.message}
+          </p>
+        {/if}
+      </div>
+    </form>
+  </div>
+  <div class="bg-base-300 flex max-w-96 flex-col gap-2 rounded-lg p-5">
     <h4 class="text-md font-semibold">Looking for your controlling hours?</h4>
     <p>
       They'll be back here soon! Don't worry, we're still tracking everything like before. Check
