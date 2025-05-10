@@ -1,8 +1,12 @@
 <script lang="ts">
   import { enhance } from '$app/forms';
   import type { PageData } from './$types';
+  import Icon from '@iconify/svelte';
 
   let { data = $bindable(), form } = $props();
+
+  let activityModal: HTMLDialogElement | null | undefined = $state();
+  let externalModal: HTMLDialogElement | null | undefined = $state();
 
   let user = $state(data.user!);
 </script>
@@ -29,8 +33,8 @@
             VATSIM. This is the best way to update your name and email.
           </p>
           <p class="mt-3">
-            2) On a regular basis, we reach out to VATSIM to retrive the latest information for all
-            users. This is the best way to update your rating
+            2) On a regular basis, we reach out to VATSIM and VATCAN to retrive the latest
+            information for all users. This is the best way to update your rating
           </p>
           <div class="modal-action">
             <label class="btn" for="incorrect-info">Close</label>
@@ -54,18 +58,85 @@
       </div>
     </form>
   </div>
-  <div class="bg-base-300 flex max-w-96 flex-col gap-2 rounded-lg p-5">
-    <h4 class="text-md font-semibold">Looking for your controlling hours?</h4>
-    <p>
-      They'll be back here soon! Don't worry, we're still tracking everything like before. Check
-      back here soon to see your past controlling history.
-    </p>
-    <p>
-      For now, checkout the <a
-        class="link"
-        target="_blank"
-        href={`https://stats.vatsim.net/stats/${user.cid}`}>VATSIM stats page</a
-      >!
-    </p>
+  <div class="bg-base-300 flex w-96 flex-col gap-2 rounded-lg p-5">
+    <h4 class="text-md font-semibold">Controller Hours</h4>
+
+    <div class="overflow-x-auto">
+      <table class="table">
+        <!-- head -->
+        <thead>
+          <tr>
+            <th class="">Period</th>
+            <th>Hours</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>This Quarter</td>
+          </tr>
+          <tr>
+            <td>Last Quarter</td>
+          </tr>
+          <tr>
+            <td>This Year</td>
+          </tr>
+          <tr>
+            <td
+              onclick={() => activityModal?.showModal()}
+              class="hover:link flex items-baseline gap-2"
+              >Activity Hours <Icon icon="mdi:information-outline" /></td
+            >
+          </tr>
+          <tr>
+            <td
+              onclick={() => externalModal?.showModal()}
+              class="hover:link flex items-baseline gap-2"
+              >External Hours <Icon icon="mdi:information-outline" /></td
+            >
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <dialog class="modal modal-bottom sm:modal-middle" bind:this={activityModal}>
+      <div class="modal-box">
+        <h3 class="text-lg font-bold">Hello!</h3>
+        <p class="py-4">
+          Activity Hours are the hours spent on CZQM positions that qualify as active time. For S1 -
+          S3 controllers, this is any Ground, Tower, Terminal, or Centre position. For C1+
+          controllers, this is any Terminal or Centre position. Activity Hours are measured per
+          calendar quarter. Controllers are required to maintain a minimum of 3 active hours per
+          quarter.
+        </p>
+        <div class="modal-action">
+          <form method="dialog">
+            <!-- if there is a button in form, it will close the modal -->
+            <button class="btn">Close</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog class="modal modal-bottom sm:modal-middle" bind:this={externalModal}>
+      <div class="modal-box">
+        <h3 class="text-lg font-bold">External Hours</h3>
+        <p class="py-4">
+          External hours are hours connected to the VATSIM network as a controller in another FIR /
+          ARTCC. For CZQM / QX Home Controllers, this number must be less than your activity hours
+          for the quarter. For CZQM / QX Visiting Controller, this number must be equal to or more
+          than your activity hours for the quarter.
+        </p>
+        <div class="modal-action">
+          <form method="dialog">
+            <!-- if there is a button in form, it will close the modal -->
+            <button class="btn">Close</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
+
+    <a class="link mt-auto" target="_blank" href={`https://stats.vatsim.net/stats/${user.cid}`}
+      >View All Hours</a
+    >
   </div>
 </div>
