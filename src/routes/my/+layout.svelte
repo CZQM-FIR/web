@@ -23,9 +23,9 @@
   <div class="container mx-auto min-h-screen">
     <h1 class="pt-6 text-2xl">{getGreeting()}, {data.user?.name_first}!</h1>
     <div class="divider"></div>
-    <div class="flex flex-row gap-3">
+    <div class="flex flex-col gap-3 md:flex-row">
       <!-- sidebar -->
-      <div class="w- flex min-h-[30rem] min-w-56 flex-col rounded-2xl p-2">
+      <div class="w- flex min-w-56 flex-col rounded-2xl p-2 md:min-h-[30rem]">
         <h3 class="m-0 p-0 text-center text-lg font-semibold">MyCZQM</h3>
         <div class="divider m-0 p-0"></div>
         <ul class="mt-1 ps-2">
