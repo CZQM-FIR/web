@@ -7,9 +7,17 @@ export const load = (async ({ locals }) => {
   const user = await db.query.users.findFirst({
     where: eq(schema.users.cid, locals.user!.cid),
     with: {
-      flags: true,
+      flags: {
+        with: {
+          flag: true
+        }
+      },
       rating: true,
-      sessions: true
+      sessions: {
+        with: {
+          position: true
+        }
+      }
     }
   });
 
