@@ -2,39 +2,12 @@
   import type { PageData } from './$types';
   import RosterStatusIndicator from './RosterStatusIndicator.svelte';
   import type { RosterPosition, RosterStatus, SoloEndorsement } from '$lib/czqm/db/schema';
+  import { getRosterStatus } from '$lib/czqm/utilities/getRosterStatus';
 
   let { data }: { data: PageData } = $props();
 
   let controllers: any[] = $state([]);
   let visitors: any[] = $state([]);
-
-  const getRosterStatus = (userData: any, position: RosterPosition) => {
-    if (userData.roster.filter((r: RosterStatus) => r.position === position).length === 0) {
-      return -1; // N/A
-    } else if (
-      userData.soloEndorsements.filter((r: any) => {
-        if (
-          r.position.callsign.toLowerCase().includes(position) &&
-          r.expiresAt > new Date().getTime()
-        ) {
-          console.log('soloEndorsement', r);
-          return true;
-        }
-      }).length > 0
-    ) {
-      return 1; // solo
-    } else if (
-      userData.roster.filter((r: RosterStatus) => r.position === position)[0].status === 0
-    ) {
-      return 0; // training
-    } else if (
-      userData.roster.filter((r: RosterStatus) => r.position === position)[0].status === 2
-    ) {
-      return 2; // certified
-    } else {
-      return -1; // N/A
-    }
-  };
 
   $effect(() => {
     controllers = data.controllers.filter((controller) => {
@@ -72,7 +45,11 @@
         {#each controllers as controller}
           <tr>
             <th class="flex flex-col">
-              <span class="font-bold">{controller.name_full} ({controller.rating.short})</span>
+              <span class="font-bold"
+                ><a href="/controller/{controller.cid}" class="hover:link"
+                  >{controller.name_full} ({controller.rating.short})</a
+                ></span
+              >
               <span class="font-normal">{controller.role}</span>
             </th>
             <td>{controller.cid}</td>
