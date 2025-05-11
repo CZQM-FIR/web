@@ -6,7 +6,7 @@
 
 <section id="resources" class="min-h-screen">
   <div class="container mx-auto">
-    <h1 class="mt-6 text-2xl">Pilot resources</h1>
+    <h1 class="mt-6 text-2xl">Pilot Resources</h1>
     <div class="divider"></div>
     <div class="flex flex-col gap-3">
       {#each data.resources as resource}
