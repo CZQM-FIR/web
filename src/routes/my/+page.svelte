@@ -54,6 +54,12 @@
       .filter((session) => session.positionId === -1)
       .map((s) => s.duration)
       .reduce((a, b) => a + b, 0) / 3600;
+
+  let allTime =
+    user.sessions
+      .filter((session) => session.positionId !== -1)
+      .map((s) => s.duration)
+      .reduce((a, b) => a + b, 0) / 3600;
 </script>
 
 <div class="flex flex-row flex-wrap gap-3">
@@ -147,6 +153,10 @@
                   ? 'text-error'
                   : ''}>{externalHours.toFixed(2)}</td
               >
+            </tr>
+            <tr>
+              <td>All Time</td>
+              <td>{allTime.toFixed(2)}</td>
             </tr>
           </tbody>
         </table>
