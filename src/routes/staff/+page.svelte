@@ -13,7 +13,9 @@
       <div class="card bg-base-200 shadow-xl">
         <div class="card-body">
           <div class="flex flex-row items-end gap-3">
-            <h2 class="card-title">{staff.name_full}</h2>
+            <h2 class="card-title">
+              <a href="/controller/{staff.cid}" class="hover:link">{staff.name_full}</a>
+            </h2>
             <p class="italic">{staff.role}</p>
           </div>
           {#if staff.bio}
