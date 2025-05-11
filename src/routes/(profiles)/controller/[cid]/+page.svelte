@@ -8,14 +8,14 @@
   let user = $state(data.user);
 
   let sessions = user?.sessions
-    .filter((s) => s.positionId !== -1)
+    ?.filter((s) => s.positionId !== -1)
     .sort((a, b) => {
       return new Date(b.logonTime).getTime() - new Date(a.logonTime).getTime();
     })
     .slice(0, 20);
 
   let thisMonth = user?.sessions
-    .filter((s) => s.positionId !== -1)
+    ?.filter((s) => s.positionId !== -1)
     .filter((s) => {
       let date = new Date(s.logonTime);
       return date.getMonth() === new Date().getMonth();
@@ -24,7 +24,7 @@
       return acc + session.duration;
     }, 0);
   let thisYear = user?.sessions
-    .filter((s) => s.positionId !== -1)
+    ?.filter((s) => s.positionId !== -1)
     .filter((s) => {
       let date = new Date(s.logonTime);
       return date.getFullYear() === new Date().getFullYear();
@@ -33,7 +33,7 @@
       return acc + session.duration;
     }, 0);
   let allTime = user?.sessions
-    .filter((s) => s.positionId !== -1)
+    ?.filter((s) => s.positionId !== -1)
     .reduce((acc, session) => {
       return acc + session.duration;
     }, 0);
