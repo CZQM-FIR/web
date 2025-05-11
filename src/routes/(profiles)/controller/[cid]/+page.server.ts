@@ -1,12 +1,13 @@
 import { db } from '$lib/czqm/db';
 import { users } from '$lib/czqm/db/schema';
 import { getUserRole } from '$lib/czqm/utilities/getUserRole';
+import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
 export const load = (async ({ locals, params }) => {
   const { cid } = params;
 
-  const user = await db.query.users.findFirst({
+  const userData = await db.query.users.findFirst({
     where: (users, { eq }) => eq(users.cid, Number(cid)),
     with: {
       flags: {
@@ -36,17 +37,20 @@ export const load = (async ({ locals, params }) => {
     }
   });
 
-  if (!user || !user.flags.some((f) => [4, 5].includes(f.flag.id))) {
-    return {
-      status: 404,
-      error: new Error('User not found')
-    };
+  if (
+    !userData ||
+    !userData.flags.some((f) => [4, 5].includes(f.flag.id)) ||
+    userData.cid !== Number(cid)
+  ) {
+    return error(404, {
+      message: 'Controller not Found'
+    });
   }
 
-  const role = getUserRole(user.flags);
+  const role = getUserRole(userData.flags);
 
   return {
-    user,
+    userData,
     role
   };
 }) satisfies PageServerLoad;

@@ -1,11 +1,12 @@
 <script lang="ts">
+  import { goto } from '$app/navigation';
   import { getRosterStatus } from '$lib/czqm/utilities/getRosterStatus';
   import RosterStatusIndicator from '../../../roster/RosterStatusIndicator.svelte';
   import type { PageData } from './$types';
 
   let { data }: { data: PageData } = $props();
 
-  let user = $state(data.user);
+  let user = $state(data.userData);
 
   let sessions = user?.sessions
     ?.filter((s) => s.positionId !== -1)
