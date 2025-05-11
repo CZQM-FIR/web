@@ -8,7 +8,7 @@
   let { data = $bindable() }: Props = $props();
 </script>
 
-<section id="charts-info" class="hero min-h-screen bg-base-200">
+<section id="charts-info" class="hero bg-base-200 min-h-screen">
   <div class="hero-content flex-col lg:flex-row">
     <img
       src="https://files.czqm.ca/images/fundy5.png"

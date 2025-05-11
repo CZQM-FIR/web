@@ -10,7 +10,7 @@
 
 <section id="about" class="bg-base-200">
   <div class="hero min-h-max pt-7">
-    <div class="container hero-content flex-col md:flex-row">
+    <div class="hero-content container flex-col md:flex-row">
       <img
         src="https://files.czqm.ca/images/simple-black-airspace.png"
         class="hidden max-w-sm rounded-lg shadow-2xl md:block"
