@@ -32,7 +32,7 @@
           <NavLink name="My Profile" icon="mdi:user" href="/my" />
           <NavLink name="Tickets" icon="mdi:envelope-outline" href="/my/tickets" />
           <NavLink name="Logout" icon="mdi:logout" href="/auth/logout" />
-          {#if data.user.flags.filter((f) => f.flag.name === 'staff').length === 1}
+          {#if data.user.flags.filter((f) => ['staff', 'admin'].includes(f.flag.name)).length === 1}
             <NavLink name="Overseer" icon="mdi:users" href={PUBLIC_OVERSEER_URL} external />
           {/if}
         </ul>
